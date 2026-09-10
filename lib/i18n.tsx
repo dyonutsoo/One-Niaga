@@ -138,8 +138,8 @@ export const TRANSLATIONS: Record<UiLang, Dict> = {
     // ---- Inventory-sync engine (new) ----
     'impact.reconcile': 'Reconcile time saved', 'impact.oversell': 'Oversell prevented (100%)',
     'impact.capital': 'Capital protected', 'impact.connections': 'Shopee · TikTok · Lazada',
-    'actionConsole.title': 'Morning Briefing — Prioritised by Financial Impact',
-    'actionConsole.desc': 'Every card below is computed from live run-rate, lead time, and channel velocity — not guesswork. Executing an action here updates your master catalog, reservation ledger, and sync log instantly.',
+    'actionConsole.title': 'Morning Briefing',
+    'actionConsole.desc': 'Every card below is computed from live run-rate, lead time, and channel velocity   Executing an action here updates your master catalog, reservation ledger, and sync log instantly.',
     'masterCatalog.title': 'Universal Master Catalog',
     'masterCatalog.desc': "One master SKU, cross-mapped to every channel's native ID and live stock count.",
     'reservations.title': 'Dynamic Reservation & Buffer Engine',

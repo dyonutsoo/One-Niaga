@@ -163,7 +163,7 @@ export function buildCompanionRecommendations({
     pushUnique(recs, {
       id: `messages-${oldest.id}`,
       severity: unreplied.length > 2 ? 'high' : 'medium',
-      title: 'Reply to customer messages before trust drops',
+      title: 'Reply to customer messages',
       affected: `${unreplied.length} unreplied message${unreplied.length === 1 ? '' : 's'} · oldest from ${oldest.customer}`,
       reason: `${platformName(oldest.platform)} buyers are waiting, and quick replies can protect conversion and ratings.`,
       impact: rm(Math.max(120, unreplied.length * 85)),
