@@ -95,7 +95,7 @@ export function Overview({
     <div className="mx-auto max-w-[1440px]">
       <header className="sticky top-0 z-10 flex min-h-[78px] flex-wrap items-center justify-between gap-4 bg-[#f3f1ed]/90 px-4 backdrop-blur sm:px-8">
         <div>
-          <h1 className="text-3xl font-semibold tracking-tight text-[#090b18]">Analytics</h1>
+          <h1 className="text-3xl font-semibold tracking-tight text-[#090b18]">Welcome, Laila</h1>
           <div className="mt-1 flex items-center gap-2 text-xs text-[#85847e]">
             <span>Dashboards</span>
             <span>/</span>
