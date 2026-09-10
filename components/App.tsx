@@ -396,9 +396,9 @@ function Workspace() {
   return (
     <LanguageContext.Provider value={{ lang: uiLang, setLang: setUiLang, t }}>
       <AssistantProvider>
-        <div className="min-h-screen w-full flex flex-col md:h-screen md:overflow-hidden md:flex-row" style={{ background: '#F6F8FB', color: '#1F2328' }}>
+        <div className="dashboard-frame min-h-screen w-full flex flex-col md:h-screen md:overflow-hidden md:flex-row">
           <Sidebar tab={tab} setTab={handleSetTab} subscribed={subscribed} user={user} onSignOut={handleSignOut} />
-          <main className="flex-1 min-w-0 overflow-y-auto">
+          <main className="dashboard-main flex-1 min-w-0 overflow-y-auto">
           {showImpactBanner && (
             <ImpactBanner reconcileHours={reconcileHours} overselPrevented={overselPrevented} capitalProtected={capitalProtected} />
           )}

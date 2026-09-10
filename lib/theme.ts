@@ -1,17 +1,17 @@
-// SnowUI-inspired dashboard tokens used by the app's inline styles.
+// Reference-inspired dashboard tokens used by the app's inline styles.
 
-export const NAVY = '#17181A';
-export const NAVY_LIGHT = '#F3F5F8';
-export const CORAL = '#8BA6FF';
-export const CREAM = '#F6F8FB';
-export const INK = '#1F2328';
+export const NAVY = '#0A0E1D';
+export const NAVY_LIGHT = '#F3F1ED';
+export const CORAL = '#FB725D';
+export const CREAM = '#F3F1ED';
+export const INK = '#090B18';
 export const GREEN = '#2E7D5B';
 export const AMBER = '#B8791A';
-export const MUTED = '#5A5F6B';
-export const BORDER = '#EDF0F5';
+export const MUTED = '#85847E';
+export const BORDER = 'rgba(10, 14, 29, 0.08)';
 
 export const STATUS_COLORS: Record<string, { fg: string; bg: string }> = {
-  awaiting: { fg: '#506CC7', bg: '#EEF2FB' },
+  awaiting: { fg: '#B23D45', bg: '#FFE1E0' },
   in_progress: { fg: AMBER, bg: '#FFF4DE' },
   delivered: { fg: GREEN, bg: '#E3EFE9' },
 };
