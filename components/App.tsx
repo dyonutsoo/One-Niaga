@@ -434,7 +434,7 @@ function Workspace() {
             />
           )}
           {tab === 'automate' && <Automate products={products} setProducts={setProducts} selectedId={selectedProductId} setSelectedId={setSelectedProductId} onManageAi={() => setTab('subscription')} />}
-          {tab === 'analyze' && <Analyze onManageAi={() => setTab('subscription')} />}
+          {tab === 'analyze' && <Analyze onManageAi={() => setTab('subscription')} platforms={PLATFORM_IDS.filter((id) => linked[id])} />}
           {tab === 'advise' && <Advise products={products} orders={linkedOrders} onManageAi={() => setTab('subscription')} />}
           {tab === 'messages' && (
             <MessagesPage

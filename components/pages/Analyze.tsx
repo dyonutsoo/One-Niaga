@@ -9,6 +9,7 @@ import { WEEKLY_SALES } from '@/lib/seed';
 import { useLang } from '@/lib/i18n';
 import { useBilling } from '@/lib/billing';
 import { AiAllowance } from '../AiAllowance';
+import type { PlatformId } from '@/lib/types';
 
 const PLATFORM_LINE_COLORS: Record<string, string> = {
   Shopee: '#FB725D',
@@ -17,7 +18,7 @@ const PLATFORM_LINE_COLORS: Record<string, string> = {
   Webstore: '#F5C738',
 };
 
-export function Analyze({ onManageAi }: { onManageAi: () => void }) {
+export function Analyze({ onManageAi, platforms }: { onManageAi: () => void; platforms: PlatformId[] }) {
   const { t, lang } = useLang();
   const { aiFetch, remaining } = useBilling();
   const [loading, setLoading] = useState(false);
@@ -36,7 +37,7 @@ export function Analyze({ onManageAi }: { onManageAi: () => void }) {
       const res = await aiFetch('/api/analyze', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ lang }),
+        body: JSON.stringify({ lang, platforms }),
       });
       const json = await res.json();
       if (!res.ok) throw new Error(json.error || `HTTP ${res.status}`);
