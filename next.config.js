@@ -1,7 +1,4 @@
-const { PHASE_DEVELOPMENT_SERVER } = require('next/constants');
-
-/** @type {(phase: string) => import('next').NextConfig} */
-module.exports = (phase) => ({
+/** @type {import('next').NextConfig} */
+module.exports = {
   reactStrictMode: true,
-  distDir: phase === PHASE_DEVELOPMENT_SERVER ? '.next' : '.next-oneniaga',
-});
+};
