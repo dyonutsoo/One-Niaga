@@ -2,10 +2,10 @@
 
 import { useState } from 'react';
 import { ArrowRight, Loader2, Sparkles } from 'lucide-react';
-import { AMBER, BORDER, CORAL, GREEN, MUTED } from '@/lib/theme';
+import { AMBER, BORDER, CORAL, GREEN, MUTED, NAVY } from '@/lib/theme';
 import { useLang } from '@/lib/i18n';
 import { useBilling } from '@/lib/billing';
-import { AnimatedList, PageHeader } from '../ui';
+import { AnimatedList } from '../ui';
 import { AiAllowance } from '../AiAllowance';
 import type { Order, Priority, Product } from '@/lib/types';
 
@@ -44,36 +44,57 @@ export function Advise({ products, orders, onManageAi }: { products: Product[]; 
   const levelBg: Record<string, string> = { high: '#EEF2FB', medium: '#FFF4DE', low: '#E3EFE9' };
 
   return (
-    <div>
-      <PageHeader eyebrow={t('nav.advise')} title={t('advise.title')} desc={t('advise.desc')} />
+    <div className="mx-auto max-w-[1440px]">
+      <header className="px-4 pb-4 pt-8 sm:px-8">
+        <div className="flex flex-wrap items-end justify-between gap-4">
+          <div>
+            <div className="text-xs font-semibold text-[#EE4EA0]">{t('nav.advise')}</div>
+            <h1 className="mt-1 text-3xl font-semibold tracking-tight text-[#090b18]">{t('advise.title')}</h1>
+            <p className="mt-2 max-w-3xl text-sm text-[#85847e]">{t('advise.desc')}</p>
+          </div>
+          <div className="hidden rounded-full bg-white/60 px-4 py-2 text-xs font-medium text-[#090b18] sm:block">
+            Decision workspace
+          </div>
+        </div>
+      </header>
       <AiAllowance onManage={onManageAi} />
-      <div className="px-4 sm:px-8 py-6">
-        <div className="surface rounded-xl p-6">
-          <div className="flex items-center justify-between mb-5">
-            <div className="flex items-center gap-2 font-bold text-slate-900">
-              <Sparkles size={18} style={{ color: '#506CC7' }} /> {t('advise.cardTitle')}
+      <div className="space-y-6 px-4 py-6 sm:px-8">
+        <section className="surface overflow-hidden p-5 sm:p-6">
+          <div className="mb-5 flex flex-wrap items-center justify-between gap-4">
+            <div className="flex items-center gap-3 font-semibold text-[#090b18]">
+              <span className="grid h-11 w-11 place-items-center rounded-2xl bg-white/70">
+                <Sparkles size={18} style={{ color: '#EE4EA0' }} />
+              </span>
+              <div>
+                <div>{t('advise.cardTitle')}</div>
+                <p className="mt-1 text-xs font-normal text-[#85847e]">Generate a practical priority list from inventory, orders, returns, and pricing signals.</p>
+              </div>
             </div>
-            <button onClick={generate} disabled={loading} className="primary-button flex items-center gap-1.5 text-xs font-semibold px-3.5 py-2" style={{ background: remaining === 0 ? '#E8552F' : undefined, opacity: loading ? 0.7 : 1 }}>
+            <button onClick={generate} disabled={loading} className="primary-button flex items-center gap-1.5 text-xs font-semibold" style={{ background: remaining === 0 ? '#FB725D' : NAVY, opacity: loading ? 0.7 : 1 }}>
               {loading ? <Loader2 size={14} className="animate-spin" /> : <ArrowRight size={14} />}
               {loading ? t('advise.thinking') : remaining === 0 ? 'Upgrade to continue' : t('advise.generate')}
             </button>
           </div>
           {error && <p className="text-xs mb-3 text-rose-600">{error}</p>}
-          {!priorities && !loading && <p className="text-sm" style={{ color: MUTED }}>{t('advise.empty')}</p>}
-          <AnimatedList className="space-y-2.5" staggerMs={80}>
+          {!priorities && !loading && (
+            <div className="rounded-[24px] bg-gradient-to-br from-white/80 to-[#fff1f6] p-6">
+              <p className="text-sm" style={{ color: MUTED }}>{t('advise.empty')}</p>
+            </div>
+          )}
+          <AnimatedList className="space-y-3" staggerMs={80}>
             {priorities &&
               priorities.map((p, i) => (
-                <div key={i} className="rounded-xl p-4 flex items-start gap-3 border border-slate-100 bg-slate-50">
-                  <span className="text-[10px] font-bold px-2 py-1 rounded-full shrink-0 mt-0.5" style={{ background: levelBg[p.level] || levelBg.low, color: levelColor[p.level] || levelColor.low }}>{(p.level || 'low').toUpperCase()}</span>
-                  <div>
-                    <div className="font-semibold text-sm text-slate-900">{p.title}</div>
-                    <div className="text-[13px] mt-0.5" style={{ color: MUTED }}>{p.reason}</div>
+                <div key={i} className="flex items-start gap-4 rounded-[22px] border border-white/70 bg-white/60 p-4 shadow-[0_14px_34px_rgba(44,42,36,.05)]">
+                  <span className="mt-0.5 shrink-0 rounded-full px-2.5 py-1 text-[10px] font-bold uppercase tracking-wide" style={{ background: levelBg[p.level] || levelBg.low, color: levelColor[p.level] || levelColor.low }}>{(p.level || 'low').toUpperCase()}</span>
+                  <div className="min-w-0">
+                    <div className="text-sm font-semibold text-[#090b18]">{p.title}</div>
+                    <div className="mt-1 text-[13px] leading-relaxed" style={{ color: MUTED }}>{p.reason}</div>
                   </div>
                 </div>
               ))}
           </AnimatedList>
-        </div>
-        <div className="mt-5 rounded-xl p-4 text-[12.5px]" style={{ background: 'white', border: `1px solid ${BORDER}`, color: MUTED }}>{t('advise.note')}</div>
+        </section>
+        <section className="surface px-4 py-3 text-[12.5px]" style={{ borderColor: BORDER, color: MUTED }}>{t('advise.note')}</section>
       </div>
     </div>
   );

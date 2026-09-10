@@ -138,9 +138,9 @@ export function CompanionPanel({
 }) {
   const top = recommendations.slice(0, 3);
   return (
-    <section className="rounded-xl border bg-white p-4" style={{ borderColor: BORDER }}>
+    <section className="surface p-4" style={{ borderColor: BORDER }}>
       <div className="mb-3 flex items-start gap-2">
-        <span className="mt-0.5 rounded-lg p-2" style={{ background: '#FDEBE7', color: CORAL }}>
+        <span className="mt-0.5 rounded-2xl p-2" style={{ background: '#FFE1E0', color: CORAL }}>
           <TriangleAlert className="h-4 w-4" />
         </span>
         <div>
